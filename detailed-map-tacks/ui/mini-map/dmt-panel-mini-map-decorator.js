@@ -1,6 +1,6 @@
 
 import { InterfaceMode } from '/core/ui/interface-modes/interface-modes.js';
-import FocusManager from '/core/ui/input/focus-manager.js';
+import { FocusManager } from '/core/ui-next/services/focus-manager.js';
 
 export class DMT_PanelMiniMapDecorator {
 
@@ -33,7 +33,7 @@ export class DMT_PanelMiniMapDecorator {
         miniMapButton.setAttribute('data-tooltip-content', Locale.compose("LOC_DMT_MAP_TACKS"));
         miniMapButton.addEventListener('action-activate', () => {
             this.openMapTacksPanel();
-            FocusManager.clearFocus(miniMapButton);
+            FocusManager.get().clearFocus(miniMapButton);
         });
         const miniMapBG = document.createElement("div");
         miniMapBG.classList.add('mini-map__map-tacks-button__bg', "pointer-events-none");

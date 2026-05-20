@@ -1,5 +1,5 @@
 import MapTackUtils from '../../map-tack-core/dmt-map-tack-utils.js';
-import { L as LensManager, a as LensActivationEventName } from '/core/ui/lenses/lens-manager.chunk.js';
+import LensManager, { LensActivationEventName } from '/core/ui/lenses/lens-manager.js';
 import { BuildingPlacementManager } from '/base-standard/ui/building-placement/building-placement-manager.js';
 // guarantee import order for patching
 import '/base-standard/ui/lenses/lens/default-lens.js';

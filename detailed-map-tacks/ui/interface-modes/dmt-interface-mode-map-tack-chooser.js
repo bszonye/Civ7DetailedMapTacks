@@ -1,5 +1,5 @@
 import { InterfaceMode } from '/core/ui/interface-modes/interface-modes.js';
-import { L as LensManager } from '/core/ui/lenses/lens-manager.chunk.js';
+import LensManager from '/core/ui/lenses/lens-manager.js';
 /**
  * Handler for DMT_INTERFACEMODE_MAP_TACK_CHOOSER.
  */

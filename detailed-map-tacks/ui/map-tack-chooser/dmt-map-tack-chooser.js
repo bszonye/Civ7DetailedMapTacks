@@ -1,6 +1,6 @@
-import { P as Panel } from '/core/ui/panel-support.chunk.js';
+import Panel from '/core/ui/panel-support.js';
 import { InterfaceMode, InterfaceModeChangedEventName } from '/core/ui/interface-modes/interface-modes.js';
-import { MustGetElement } from "/core/ui/utilities/utilities-dom.chunk.js";
+import { MustGetElement } from '/core/ui/utilities/utilities-dom.js';
 import MapTackUIUtils from '../map-tack-core/dmt-map-tack-ui-utils.js';
 import MapTackUtils from '../map-tack-core/dmt-map-tack-utils.js';
 import { ConstructibleClassType, ExcludedItems, YieldTypes } from '../map-tack-core/dmt-map-tack-constants.js';

@@ -1,5 +1,5 @@
 
-import { U as UISystem, V as ViewManager } from '/core/ui/views/view-manager.chunk.js';
+import ViewManager, { UISystem } from '/core/ui/views/view-manager.js';
 export class MapTackPlacementView {
     constructor() {
         // Attach the template to the body.
