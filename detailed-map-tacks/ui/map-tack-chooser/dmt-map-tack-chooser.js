@@ -83,8 +83,7 @@ class MapTackChooser extends Panel {
     }
     processUniqueConstructibles() {
         // Unique buildings
-        this.uniqueBuildingDefs = MapTackUtils.getPlayerUniqueBuildings()
-            .map(b => GameInfo.Constructibles.lookup(b));
+        this.uniqueBuildingDefs = MapTackUtils.getPlayerUniqueBuildings();
         for (const e of GameInfo.Buildings) {
             if (e.TraitType && e.TraitType != "TRAIT_LEADER_MINOR_CIV") {
                 this.excludedConstructibles.add(e.ConstructibleType);

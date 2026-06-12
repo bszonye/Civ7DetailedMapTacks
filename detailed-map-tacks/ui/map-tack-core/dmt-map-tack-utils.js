@@ -585,7 +585,7 @@ class MapTackUtilsSingleton {
         for (const uqdef of this.getPlayerUniqueQuarters()) {
             blist.push(uqdef.BuildingType1, uqdef.BuildingType2);
         }
-        return blist;
+        return blist.map(b => GameInfo.Constructibles.lookup(b));
     }
     getPlayerUniqueQuarters() {
         const uqlist = [];
