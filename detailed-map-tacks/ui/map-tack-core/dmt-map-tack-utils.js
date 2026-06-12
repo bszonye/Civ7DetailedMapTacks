@@ -564,7 +564,7 @@ class MapTackUtilsSingleton {
         return QuarterType.NO_QUARTER;
     }
     getPlayerUniqueQuarterBuildings() {
-        for (const uniqueQuarterDef of GameInfo.UniqueQuarters) {
+        for (const uniqueQuarterDef of this.getPlayerUniqueQuarters()) {
             if (TraitModifier.isTraitActive(uniqueQuarterDef.TraitType)) {
                 return [uniqueQuarterDef.BuildingType1, uniqueQuarterDef.BuildingType2];
             }
@@ -572,13 +572,30 @@ class MapTackUtilsSingleton {
         return [];
     }
     getPlayerUniqueQuarterType() {
-        for (const uniqueQuarterDef of GameInfo.UniqueQuarters) {
+        for (const uniqueQuarterDef of this.getPlayerUniqueQuarters()) {
             if (TraitModifier.isTraitActive(uniqueQuarterDef.TraitType)) {
                 return uniqueQuarterDef.UniqueQuarterType;
             }
         }
         // GENERIC_UNIQUE_QUARTER by default.
         return QuarterType.GENERIC_UNIQUE_QUARTER;
+    }
+    getPlayerUniqueBuildings() {
+        const blist = [];
+        for (const uqdef of this.getPlayerUniqueQuarters()) {
+            blist.push(uqdef.BuildingType1, uqdef.BuildingType2);
+        }
+        return blist;
+    }
+    getPlayerUniqueQuarters() {
+        const uqlist = [];
+        const playerConstructibles = Players.Constructibles.get(GameContext.localPlayerID);
+        const uqtypes = playerConstructibles?.getUnlockedUniqueQuarters() ?? [];
+        for (const type of uqtypes) {
+            let uqdef = GameInfo.UniqueQuarters.lookup(type);
+            if (uqdef) uqlist.push(uqdef);
+        }
+        return uqlist;
     }
     getConstructibleYieldChanges(type) {
         return this.constructibleYieldChanges[type] || [];
