@@ -83,14 +83,10 @@ class MapTackChooser extends Panel {
     }
     processUniqueConstructibles() {
         // Unique buildings
+        this.uniqueBuildingDefs = MapTackUtils.getPlayerUniqueBuildings();
         for (const e of GameInfo.Buildings) {
-            if (e.TraitType) {
-                if (TraitModifier.isTraitActive(e.TraitType)) {
-                    this.uniqueBuildingDefs.push(GameInfo.Constructibles.lookup(e.ConstructibleType));
-                }
-                if (e.TraitType != "TRAIT_LEADER_MINOR_CIV") {
-                    this.excludedConstructibles.add(e.ConstructibleType);
-                }
+            if (e.TraitType && e.TraitType != "TRAIT_LEADER_MINOR_CIV") {
+                this.excludedConstructibles.add(e.ConstructibleType);
             }
         }
         // Unique improvements
