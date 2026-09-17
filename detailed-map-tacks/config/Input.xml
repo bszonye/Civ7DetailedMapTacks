@@ -2,12 +2,14 @@
 <Database>
     <InputActions>
         <Row ActionId="open-map-tack-panel" DeviceType="Keyboard" Name="LOC_DMT_OPEN_MAP_TACK_PANEL" Description="LOC_DMT_OPEN_MAP_TACK_PANEL"/>
-    	<Row ActionId="toggle-map-tack-layer" DeviceType="Keyboard" Name="LOC_DMT_TOGGLE_MAP_TACKS" Description="LOC_DMT_TOGGLE_MAP_TACKS"/>
+        <Row ActionId="toggle-map-tack-layer" DeviceType="Keyboard" Name="LOC_DMT_TOGGLE_MAP_TACKS" Description="LOC_DMT_TOGGLE_MAP_TACKS"/>
     </InputActions>
-	<InputContextConstraints>
+    <InputContextConstraints>
+        <Row ActionId="open-map-tack-panel" ContextId="Unit"/>
         <Row ActionId="open-map-tack-panel" ContextId="World"/>
+        <Row ActionId="toggle-map-tack-layer" ContextId="Unit"/>
         <Row ActionId="toggle-map-tack-layer" ContextId="World"/>
-	</InputContextConstraints>
+    </InputContextConstraints>
     <InputActionDefaultGestures>
         <Row ActionId="open-map-tack-panel" Index="0" GestureType="KBMouse" GestureData="KEY_F2" />
         <Row ActionId="toggle-map-tack-layer" Index="0" GestureType="KBMouse" GestureData="KEY_X" />

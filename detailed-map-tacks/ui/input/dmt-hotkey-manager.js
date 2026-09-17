@@ -1,4 +1,5 @@
 import HotkeyManager from '/core/ui/input/hotkey-manager.js';
+import { InputHandlerState } from '/core/ui/input/input-support.js';
 
 engine.whenReady.then(() => {
     // Since HotkeyManager is already an instance of a singleton class, can directly override its functions without prototype or instance.
@@ -12,10 +13,10 @@ engine.whenReady.then(() => {
             switch (name) {
                 case "open-map-tack-panel":
                     HotkeyManager.sendHotkeyEvent(name);
-                    return false;
+                    return InputHandlerState.Handled;
                 case "toggle-map-tack-layer":
                     HotkeyManager.sendLayerHotkeyEvent(name);
-                    return false;
+                    return InputHandlerState.Handled;
             }
         }
         return prevHandleInput.apply(this, args);

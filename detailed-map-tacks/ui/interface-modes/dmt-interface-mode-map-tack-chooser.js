@@ -1,3 +1,4 @@
+import { InputHandlerState } from '/core/ui/input/input-support.js';
 import { InterfaceMode } from '/core/ui/interface-modes/interface-modes.js';
 import LensManager from '/core/ui/lenses/lens-manager.js';
 /**
@@ -17,21 +18,21 @@ class MapTackChooserInterfaceMode {
     }
     handleInput(inputEvent) {
         if (inputEvent.detail.status != InputActionStatuses.FINISH) {
-            return true;
+            return InputHandlerState.Active;
         }
         if (inputEvent.isCancelInput() || inputEvent.detail.name == 'sys-menu') {
             InterfaceMode.switchToDefault();
             inputEvent.stopPropagation();
             inputEvent.preventDefault();
-            return false;
+            return InputHandlerState.Handled;
         }
         // Block mouse-left in plot click to exit.
         if (inputEvent.detail.name == 'mousebutton-left' || inputEvent.detail.name == 'accept') {
             inputEvent.stopPropagation();
             inputEvent.preventDefault();
-            return false;
+            return InputHandlerState.Handled;
         }
-        return true;
+        return InputHandlerState.Active;
     }
 }
 InterfaceMode.addHandler('DMT_INTERFACEMODE_MAP_TACK_CHOOSER', new MapTackChooserInterfaceMode());

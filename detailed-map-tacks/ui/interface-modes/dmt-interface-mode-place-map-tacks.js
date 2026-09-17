@@ -1,6 +1,6 @@
-
 import { Audio } from '/core/ui/audio-base/audio-support.js';
 import ChoosePlotInterfaceMode from '/base-standard/ui/interface-modes/interface-mode-choose-plot.js';
+import { InputHandlerState } from '/core/ui/input/input-support.js';
 import { InterfaceMode } from '/core/ui/interface-modes/interface-modes.js';
 import { MustGetElement } from '/core/ui/utilities/utilities-dom.js';
 import { PlotCursorUpdatedEventName } from '/core/ui/input/plot-cursor.js';
@@ -287,23 +287,23 @@ class PlaceMapTacksInterfaceMode extends ChoosePlotInterfaceMode {
     }
     handleInput(inputEvent) {
         if (inputEvent.detail.status != InputActionStatuses.FINISH) {
-            return true;
+            return InputHandlerState.Active;
         }
         if (inputEvent.isCancelInput() || inputEvent.detail.name == "sys-menu") {
             InterfaceMode.switchTo("DMT_INTERFACEMODE_MAP_TACK_CHOOSER");
             inputEvent.stopPropagation();
             inputEvent.preventDefault();
-            return false;
+            return InputHandlerState.Handled;
         }
         if (Input.isCtrlDown()) {
             if (inputEvent.detail.name == "mousewheel-down" || inputEvent.detail.name == "mousewheel-up") {
                 this.updatePreviewRadius(inputEvent.detail.name == "mousewheel-down" ? -1 : 1);
                 inputEvent.stopPropagation();
                 inputEvent.preventDefault();
-                return false;
+                return InputHandlerState.Handled;
             }
         }
-        return true;
+        return InputHandlerState.Active;
     }
 }
 InterfaceMode.addHandler("DMT_INTERFACEMODE_PLACE_MAP_TACKS", new PlaceMapTacksInterfaceMode());
